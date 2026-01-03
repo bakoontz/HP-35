@@ -12,10 +12,10 @@ class DataModel {
 
     func keys(for model: Model) -> [Key] {
         switch Global.model {
-        case .hp35: hp35Keys
-        case .hp45: hp45Keys
-        case .hp21: hp21Keys
-        case .mk61: mk61Keys
+        case .hp35: return hp35Keys
+        case .hp45: return hp45Keys
+        case .hp21: return hp21Keys
+        case .mk61: return mk61Keys
         }
     }
 
@@ -232,44 +232,44 @@ extension Sym {
 extension String {
     var ops35: [Op] {
         switch self {
-        case "^": [.powerXY]
-        case "l": [.log]
-        case "n": [.ln]
-        case "e": [.ex]
-        case "C": .isHP35 ? [.clr] : [.none, .clr]
-        case "q": [.sqrt]
-        case "a": [.fShift]
-        case "s": [.sin, .asin]
-        case "c": [.cos, .acos]
-        case "t": [.tan, .atan]
-        case "i": [.inverse]
-        case "L": [.exchangeXY]
-        case "D": .isHP45 ? [.rotateDown, .stdDev] : [.rotateDown]
-        case "S": [.sto(0, op: .none)]
-        case "R": [.rcl(0, op: .none)]
-        case "\r": [.enter]
-        case "h": [.chs]
-        case "E": [.eex]
-        case "X": .isHP35 ? [.clrX] : [.none, .clrX]
-        case "-": [.substract, .mSubstract]
-        case "+": [.add, .mAdd]
-        case "*": [.multiply, .mMultiply]
-        case "/": [.divide, .mDivide]
-        case "p": .isHP35 ? [.pi] : [.none, .pi]
-        case "Y": .isHP21 ? [.dsp] : [.none]
-        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".": [.digit(self)]
+        case "^": return [.powerXY]
+        case "l": return [.log]
+        case "n": return [.ln]
+        case "e": return [.ex]
+        case "C": return .isHP35 ? [.clr] : [.none, .clr]
+        case "q": return [.sqrt]
+        case "a": return [.fShift]
+        case "s": return [.sin, .asin]
+        case "c": return [.cos, .acos]
+        case "t": return [.tan, .atan]
+        case "i": return [.inverse]
+        case "L": return [.exchangeXY]
+        case "D": return .isHP45 ? [.rotateDown, .stdDev] : [.rotateDown]
+        case "S": return [.sto(0, op: .none)]
+        case "R": return [.rcl(0, op: .none)]
+        case "\r": return [.enter]
+        case "h": return [.chs]
+        case "E": return [.eex]
+        case "X": return .isHP35 ? [.clrX] : [.none, .clrX]
+        case "-": return [.substract, .mSubstract]
+        case "+": return [.add, .mAdd]
+        case "*": return [.multiply, .mMultiply]
+        case "/": return [.divide, .mDivide]
+        case "p": return .isHP35 ? [.pi] : [.none, .pi]
+        case "Y": return .isHP21 ? [.dsp] : [.none]
+        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".": return [.digit(self)]
 
         // HP-45
-        case "f": [.fix]
-        case "P": [.toP, .toR]
-        case "M": [.toDMS]
-        case "N": [.fromDMS]
-        case "x": [.none, .lstX]
-        case "Z": [.sumPlus, .sumMinus]
+        case "f": return [.fix]
+        case "P": return [.toP, .toR]
+        case "M": return [.toDMS]
+        case "N": return [.fromDMS]
+        case "x": return [.none, .lstX]
+        case "Z": return [.sumPlus, .sumMinus]
 
         // Mac Keyboard only
-        case .delete: [.delete]
-        default: []
+        case .delete: return [.delete]
+        default: return []
         }
     }
 }
